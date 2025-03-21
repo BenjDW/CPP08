@@ -6,7 +6,7 @@
 /*   By: bde-wits <bde-wits@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:15:19 by bde-wits          #+#    #+#             */
-/*   Updated: 2025/03/21 13:57:45 by bde-wits         ###   ########.fr       */
+/*   Updated: 2025/03/21 14:01:14 by bde-wits         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,14 @@ class MutantStack : public std::stack<T>
 template <typename T>
 typename MutantStack<T>::iterator MutantStack<T>::begin() 
 {
-    return this->c.begin();
+    return (this->c.begin());
 }
 
-
+template <typename T>
+typename MutantStack<T>::iterator MutantStack<T>::end()
+{
+	return (this->c.end());
+}
 
 
 template <typename T>

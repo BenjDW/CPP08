@@ -6,7 +6,7 @@
 /*   By: bde-wits <bde-wits@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 08:22:46 by bde-wits          #+#    #+#             */
-/*   Updated: 2025/03/21 11:30:57 by bde-wits         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:52:06 by bde-wits         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ void	Span::addNumber(unsigned int nb)
 	this->stock.push_back(nb);
 }
 
-// addNumber pour gere les range dans le vector
-// void	Span::addNumber(range)
-// {
-
-// }
+void Span::addNumbers(std::vector<int>::iterator start, std::vector<int>::iterator end)
+{
+    if (stock.size() + std::distance(start, end) > stock.capacity())
+        throw std::runtime_error("Pas assez de place dans le Span.");
+    
+    stock.insert(stock.end(), start, end);
+}
 
 unsigned int	Span::longestSpan()
 {

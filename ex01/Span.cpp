@@ -6,7 +6,7 @@
 /*   By: bde-wits <bde-wits@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 08:22:46 by bde-wits          #+#    #+#             */
-/*   Updated: 2025/03/21 08:03:42 by bde-wits         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:30:57 by bde-wits         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,53 +19,52 @@ void	Span::addNumber(unsigned int nb)
 	this->stock.push_back(nb);
 }
 
+// addNumber pour gere les range dans le vector
+// void	Span::addNumber(range)
+// {
+
+// }
+
 unsigned int	Span::longestSpan()
 {
 	unsigned int max = 0;
-	unsigned int before_max = 0;
+	unsigned int min = 0;
     std::vector<unsigned int>::iterator it;
 
 	if (stock.size() < 2)
         throw std::runtime_error("Pas assez de nombres pour calculer un span.");
-
+	it = stock.begin();
+	min = *it;
     for (it = stock.begin(); it != stock.end(); ++it)
     {
         if (*it > max)
-        {
-            before_max = max;
             max = *it;
-        }
-        else if (*it > before_max)
-        {
-            before_max = *it;
-        }
+        if (*it < min)
+            min = *it;
     }
-    return (max - before_max);
+    return (max - min);
 }
-
 
 unsigned int	Span::shortestSpan()
 {
-	std::vector<unsigned int>::iterator	it;
-	unsigned int	smallest = 0;
-	unsigned int	max = 0;
-
+	unsigned int result = 4294967295;
+	unsigned int diff = 0;
 	if (stock.size() < 2)
-        throw std::runtime_error("Pas assez de nombres pour calculer un span.");
-
-	for (it = stock.begin(); it != stock.end(); ++it)
-    {
-		if (*it < smallest)
-        	smallest = *it;
-        if (*it > max)
-            max = *it;
+		throw std::runtime_error("Pas assez de nombres pour calculer un span.");
+		
+	for (std::vector<unsigned int>::iterator it = stock.begin(); it != stock.end() - 1; ++it)
+	{
+		diff = *(it + 1) - *it;
+		if (diff < result)
+			result = diff;
 	}
-	return (max - smallest);
+
+	return result;
 }
 
 Span::Span(unsigned int n)
 {
-	stock.reserve(n);//reserve n emplacement
+	stock.reserve(n);
 }
 
 Span::~Span()

@@ -6,14 +6,14 @@
 #    By: bde-wits <bde-wits@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/16 09:56:17 by bde-wits          #+#    #+#              #
-#    Updated: 2025/03/19 08:47:16 by bde-wits         ###   ########.fr        #
+#    Updated: 2025/03/21 12:13:36 by bde-wits         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
-TARGET = array
+TARGET = mutant
 
 SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)

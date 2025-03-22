@@ -6,7 +6,7 @@
 /*   By: bde-wits <bde-wits@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 08:22:46 by bde-wits          #+#    #+#             */
-/*   Updated: 2025/03/21 11:52:06 by bde-wits         ###   ########.fr       */
+/*   Updated: 2025/03/22 07:06:53 by bde-wits         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,22 @@ Span::Span(unsigned int n)
 {
 	stock.reserve(n);
 }
+
+Span::Span(const Span &cpy) : stock(cpy.stock) 
+{
+}
+
+Span& Span::operator=(const Span &cpy)
+{
+    if (this != &cpy)
+    {
+        stock = cpy.stock;
+    }
+    return *this;
+}
+
+Span::Span()
+{}
 
 Span::~Span()
 {
